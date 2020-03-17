@@ -24,4 +24,20 @@ $(function () {
         return randomNum;
     }
 
+    function checkEvenOrOdd() {
+        var tempNum = 0;
+        var index = randomNum.length - 1;
+        for(var i = 0; i < randomNum.length; i++){
+            tempNum += randomNum[i] * Math.pow(10, index);
+            index --;
+        }
+        if(tempNum % 2 === 0){
+            console.log("Even number");
+        } else {
+            console.log("Odd number");
+        }
+    }
+
+    checkEvenOrOdd();
+
 });
