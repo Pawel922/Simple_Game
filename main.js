@@ -1,7 +1,6 @@
 $(function () {
 
     var randomNum = generateRandomNum();
-    var numOfDigit = 4;
     console.log(randomNum);
 
     $("#numbers").on("submit", function (e) {
@@ -26,13 +25,7 @@ $(function () {
     }
 
     function checkEvenOrOdd() {
-        var tempNum = 0;
-        var index = randomNum.length - 1;
-        for(var i = 0; i < randomNum.length; i++){
-            tempNum += randomNum[i] * Math.pow(10, index);
-            index --;
-        }
-        if(tempNum % 2 === 0){
+        if(convertToNum() % 2 === 0){
             console.log("Even number");
         } else {
             console.log("Odd number");
@@ -40,17 +33,21 @@ $(function () {
     }
 
     function checkIfDividedByThree() {
+        if(convertToNum() % 3 === 0){
+            console.log("Divided by 3");
+        } else {
+            console.log("Not divided by 3");
+        }
+    }
+
+    function convertToNum(){
         var tempNum = 0;
         var index = randomNum.length - 1;
         for(var i = 0; i < randomNum.length; i++){
             tempNum += randomNum[i] * Math.pow(10, index);
             index --;
         }
-        if(tempNum % 3 === 0){
-            console.log("Divided by 3");
-        } else {
-            console.log("Not divided by 3");
-        }
+        return tempNum;
     }
 
     checkIfDividedByThree();
