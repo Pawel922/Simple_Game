@@ -1,9 +1,10 @@
 $(function () {
 
     var randomNum = generateRandomNum();
+    var numOfDigit = 4;
     console.log(randomNum);
 
-    $("form").on("submit", function (e) {
+    $("#numbers").on("submit", function (e) {
         e.preventDefault();
         var inputs = $(".user_answer");
         for(var i = 0; i < inputs.length; i++) {
@@ -38,6 +39,21 @@ $(function () {
         }
     }
 
+    function checkIfDividedByThree() {
+        var tempNum = 0;
+        var index = randomNum.length - 1;
+        for(var i = 0; i < randomNum.length; i++){
+            tempNum += randomNum[i] * Math.pow(10, index);
+            index --;
+        }
+        if(tempNum % 3 === 0){
+            console.log("Divided by 3");
+        } else {
+            console.log("Not divided by 3");
+        }
+    }
+
+    checkIfDividedByThree();
     checkEvenOrOdd();
 
 });
