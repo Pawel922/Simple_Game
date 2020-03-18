@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Simple Game</title>
 </head>
-    <body>
-    <form>
+<body>
+    <form id="numbers">
         <table>
             <tr>
                 <th>1st</th>
@@ -29,6 +29,26 @@
             </tr>
         </table>
         <input type="submit" id="check_button" value="Check">
+    </form>
+    <form id="hints">
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" name="hint" value="odd-or-even">Is an odd or even number?
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="hint" value="divided-by-three">Is divided by 3?
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="hint" value="range">Is a prime number?
+                </td>
+            </tr>
+        </table>
+        <input type="submit" id="show_button" value="Show">
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="main.js"></script>
