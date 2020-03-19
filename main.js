@@ -6,7 +6,7 @@ $(function () {
     $("#numbers").on("submit", function (e) {
         e.preventDefault();
         var inputs = $(".user_answer");
-        for(var i = 0; i < inputs.length; i++) {
+        for(var i = 0; i < inputs.length; i++){
             var numValueOfInput = parseInt(inputs[i].value);
             if(numValueOfInput === randomNum[i]){
                 inputs[i].style.background = "green";
@@ -18,7 +18,7 @@ $(function () {
 
     function generateRandomNum() {
         var randomNum = [];
-        for(var i = 0; i < 4; i++) {
+        for(var i = 0; i < 4; i++){
             randomNum.push(Math.floor(Math.random() * 10));
         }
         return randomNum;
@@ -32,7 +32,7 @@ $(function () {
         }
     }
 
-    function checkIfDividedByThree() {
+    function checkIfDividedByThree(){
         if(convertToNum() % 3 === 0){
             console.log("Divided by 3");
         } else {
@@ -50,7 +50,17 @@ $(function () {
         return tempNum;
     }
 
+    function checkIfDividedByFour(){
+        if(convertToNum() % 4 === 0){
+            console.log("Divided by 4")
+        } else {
+            console.log("Not divided by 4");
+        }
+    }
+
+
     checkIfDividedByThree();
+    checkIfDividedByFour();
     checkEvenOrOdd();
 
 });
