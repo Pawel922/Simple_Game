@@ -26,17 +26,17 @@ $(function () {
 
     function checkEvenOrOdd() {
         if(convertToNum() % 2 === 0){
-            console.log("Even number");
+            showHint("Even number");
         } else {
-            console.log("Odd number");
+            showHint("Odd number");
         }
     }
 
     function checkIfDividedByThree(){
         if(convertToNum() % 3 === 0){
-            console.log("Divided by 3");
+            showHint("Divided by 3")
         } else {
-            console.log("Not divided by 3");
+            showHint("Not divided by 3");
         }
     }
 
@@ -52,15 +52,22 @@ $(function () {
 
     function checkIfDividedByFour(){
         if(convertToNum() % 4 === 0){
-            console.log("Divided by 4")
+            showHint("Divided by 4")
         } else {
-            console.log("Not divided by 4");
+            showHint("Not divided by 4");
         }
+    }
+
+    function showHint(content) {
+        var paragraphElement = $("<p>");
+        var divisionElement = $("#hint_content");
+        console.log(divisionElement);
+        paragraphElement.text(content);
+        divisionElement.append(paragraphElement);
     }
 
 
     checkIfDividedByThree();
     checkIfDividedByFour();
     checkEvenOrOdd();
-
 });
