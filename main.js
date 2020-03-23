@@ -16,6 +16,26 @@ $(function () {
         }
     });
 
+    $("#hints").on("submit", function (e) {
+        e.preventDefault();
+        var inputs = $(".user_selection");
+        for(var i = 0; i < inputs.length; i++){
+            if(inputs[i].checked){
+                switch (inputs[i].getAttribute("value")){
+                    case "odd-or-even":
+                        checkEvenOrOdd();
+                        break;
+                    case "divided-by-three":
+                        checkIfDividedByThree();
+                        break;
+                    case "divided-by-four":
+                        checkIfDividedByFour();
+                        break;
+                }
+            }
+        }
+    });
+
     function generateRandomNum() {
         var randomNum = [];
         for(var i = 0; i < 4; i++){
@@ -65,9 +85,4 @@ $(function () {
         paragraphElement.text(content);
         divisionElement.append(paragraphElement);
     }
-
-
-    checkIfDividedByThree();
-    checkIfDividedByFour();
-    checkEvenOrOdd();
 });
