@@ -6,13 +6,20 @@ $(function () {
     $("#numbers").on("submit", function (e) {
         e.preventDefault();
         var inputs = $(".user_answer");
+        var numOfCorrectAnswer = 0;
         for(var i = 0; i < inputs.length; i++){
             var numValueOfInput = parseInt(inputs[i].value);
             if(numValueOfInput === randomNum[i]){
                 inputs[i].style.background = "green";
+                numOfCorrectAnswer ++;
             } else {
                 inputs[i].style.background = "red";
             }
+        }
+        if(numOfCorrectAnswer === randomNum.length){
+            var divElem = $("<div>");
+            divElem.text("Congratulations! You win!");
+            divElem.insertBefore($("#code"));
         }
     });
 
