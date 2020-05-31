@@ -17,9 +17,10 @@ $(function () {
             }
         }
         if(numOfCorrectAnswer === randomNum.length){
-            var divElem = $("<div>");
-            divElem.text("Congratulations! You win!");
-            divElem.insertBefore($("#code"));
+            var paragraphElement = $("<p>");
+            var divisionElement = $("#score");
+            paragraphElement.text("Congratulations! You win!");
+            divisionElement.append(paragraphElement);
         }
     });
 
@@ -45,7 +46,7 @@ $(function () {
 
     function generateRandomNum() {
         var randomNum = [];
-        for(var i = 0; i < 4; i++){
+        for(var i = 0; i < 3; i++){
             randomNum.push(Math.floor(Math.random() * 10));
         }
         return randomNum;
@@ -67,6 +68,14 @@ $(function () {
         }
     }
 
+    function checkIfDividedByFour(){
+        if(convertToNum() % 4 === 0){
+            showHint("Divided by 4")
+        } else {
+            showHint("Not divided by 4");
+        }
+    }
+
     function convertToNum(){
         var tempNum = 0;
         var index = randomNum.length - 1;
@@ -77,18 +86,9 @@ $(function () {
         return tempNum;
     }
 
-    function checkIfDividedByFour(){
-        if(convertToNum() % 4 === 0){
-            showHint("Divided by 4")
-        } else {
-            showHint("Not divided by 4");
-        }
-    }
-
     function showHint(content) {
         var paragraphElement = $("<p>");
         var divisionElement = $("#hint_content");
-        console.log(divisionElement);
         paragraphElement.text(content);
         divisionElement.append(paragraphElement);
     }
