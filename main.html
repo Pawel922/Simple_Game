@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Simple Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="score"></div>
 <div id="code">
     <form id="numbers">
         <table>
@@ -12,12 +14,8 @@
                 <th>1st</th>
                 <th>2nd</th>
                 <th>3rd</th>
-                <th>4th</th>
             </tr>
             <tr>
-                <td>
-                    <input class="user_answer" type="number" min="0" max="9" step="1" value="0">
-                </td>
                 <td>
                     <input class="user_answer" type="number" min="0" max="9" step="1" value="0">
                 </td>
@@ -32,9 +30,8 @@
         <input type="submit" id="check_button" value="Check">
     </form>
 </div>
-<div id="hint_content">
-</div>
-<div>
+<div id="hint_content"></div>
+<div id="hint_form">
     <form id="hints">
         <table>
             <tr>
