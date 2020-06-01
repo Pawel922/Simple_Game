@@ -26,15 +26,13 @@ $(function () {
 
     $("#hints").on("submit", function (e) {
         e.preventDefault();
+        clearHints();
         var inputs = $(".user_selection");
         for(var i = 0; i < inputs.length; i++){
             if(inputs[i].checked){
                 switch (inputs[i].getAttribute("value")){
                     case "odd-or-even":
                         checkEvenOrOdd();
-                        break;
-                    case "divided-by-three":
-                        checkIfDividedByThree();
                         break;
                     case "divided-by-four":
                         checkIfDividedByFour();
@@ -57,14 +55,6 @@ $(function () {
             showHint("Even number");
         } else {
             showHint("Odd number");
-        }
-    }
-
-    function checkIfDividedByThree(){
-        if(convertToNum() % 3 === 0){
-            showHint("Divided by 3")
-        } else {
-            showHint("Not divided by 3");
         }
     }
 
@@ -92,4 +82,10 @@ $(function () {
         paragraphElement.text(content);
         divisionElement.append(paragraphElement);
     }
+
+    function clearHints() {
+        var divisionElement = $("#hint_content");
+        divisionElement.empty();
+    }
+
 });
