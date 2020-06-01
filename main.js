@@ -1,6 +1,8 @@
 $(function () {
 
     var randomNum = generateRandomNum();
+    var trialNum = 6;
+    showInfo("You have " + trialNum + " trials" );
     console.log(randomNum);
 
     $("#numbers").on("submit", function (e) {
@@ -16,11 +18,17 @@ $(function () {
                 inputs[i].style.background = "red";
             }
         }
+
+        trialNum > 0 ? trialNum -- : trialNum = 0;
+
         if(numOfCorrectAnswer === randomNum.length){
-            var paragraphElement = $("<p>");
-            var divisionElement = $("#score");
-            paragraphElement.text("Congratulations! You win!");
-            divisionElement.append(paragraphElement);
+            showInfo("Congratulations! You win!")
+        } else if (trialNum !== 0) {
+            var grammarCorrect = trialNum === 1 ? " trial" : " trials";
+            showInfo("You have " + trialNum + grammarCorrect);
+        } else {
+            showInfo("You lost!");
+
         }
     });
 
@@ -86,6 +94,14 @@ $(function () {
     function clearHints() {
         var divisionElement = $("#hint_content");
         divisionElement.empty();
+    }
+
+    function showInfo(content) {
+        var paragraphElement = $("<p>");
+        var divisionElement = $("#score");
+        divisionElement.empty();
+        paragraphElement.text(content);
+        divisionElement.append(paragraphElement);
     }
 
 });
