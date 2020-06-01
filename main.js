@@ -3,6 +3,8 @@ $(function () {
     var randomNum = generateRandomNum();
     var trialNum = 6;
     showInfo("You have " + trialNum + " trials" );
+    clearContents();
+    showDigits();
     console.log(randomNum);
 
     $("#numbers").on("submit", function (e) {
@@ -11,18 +13,18 @@ $(function () {
         var numOfCorrectAnswer = 0;
         for(var i = 0; i < inputs.length; i++){
             var numValueOfInput = parseInt(inputs[i].value);
-            if(numValueOfInput === randomNum[i]){
-                inputs[i].style.background = "green";
-                numOfCorrectAnswer ++;
-            } else {
-                inputs[i].style.background = "red";
+            if(numValueOfInput === randomNum[i]) {
+                numOfCorrectAnswer++;
             }
         }
 
         trialNum > 0 ? trialNum -- : trialNum = 0;
 
         if(numOfCorrectAnswer === randomNum.length){
-            showInfo("Congratulations! You win!")
+            showInfo("Congratulations! You win!");
+            for(var i = 0; i < inputs.length; i++) {
+                inputs[i].style.background = "green";
+            }
         } else if (trialNum !== 0) {
             var grammarCorrect = trialNum === 1 ? " trial" : " trials";
             showInfo("You have " + trialNum + grammarCorrect);
@@ -48,6 +50,10 @@ $(function () {
                 }
             }
         }
+    });
+
+    $("#refresh").on("click", function () {
+       location.reload(true);
     });
 
     function generateRandomNum() {
@@ -102,6 +108,32 @@ $(function () {
         divisionElement.empty();
         paragraphElement.text(content);
         divisionElement.append(paragraphElement);
+    }
+
+    function showDigits() {
+        var paragraphElement = $("<p>");
+        var divisionElement = $("#digits");
+        var tempArray = [];
+        for(var i = 0; i < randomNum.length; i++) {
+            tempArray[i] = randomNum[i];
+        }
+        var shuffleArray = shuffle(tempArray);
+        console.log(shuffleArray);
+        paragraphElement.text(shuffleArray);
+        divisionElement.append(paragraphElement);
+    }
+
+    function shuffle(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    
+    function clearContents() {
+        $(".user_answer").prop('value', 0);
+        $("#hints input").prop('checked', false);
     }
 
 });

@@ -12,6 +12,11 @@
     margin: auto;
 }
 
+#digits {
+    border: 1px solid black;
+    margin-left: 10%;
+}
+
 #hint_content p {
     border: 1px solid red;
     margin-left: 10%;
@@ -19,5 +24,9 @@
 
 #hint_form {
     border: 1px solid green;
+    margin-left: 10%;
+}
+
+#refresh {
     margin-left: 10%;
 }
