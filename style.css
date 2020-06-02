@@ -12,6 +12,7 @@ html {
 #numbers {
     width: 80%;
     margin: auto;
+    padding-bottom: 2%;
 }
 
 #numbers table {
@@ -38,3 +39,4 @@ html {
     font-size: 0.9rem;
     color: rosybrown;
 }
+
