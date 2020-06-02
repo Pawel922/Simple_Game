@@ -2,10 +2,9 @@ $(function () {
 
     var randomNum = generateRandomNum();
     var trialNum = 6;
-    showInfo("You have " + trialNum + " trials" );
+    showInfo("You have " + trialNum + " trials!" );
     clearContents();
     showDigits();
-    console.log(randomNum);
 
     $("#numbers").on("submit", function (e) {
         e.preventDefault();
@@ -26,7 +25,7 @@ $(function () {
                 inputs[i].style.background = "green";
             }
         } else if (trialNum !== 0) {
-            var grammarCorrect = trialNum === 1 ? " trial" : " trials";
+            var grammarCorrect = trialNum === 1 ? " trial!" : " trials!";
             showInfo("You have " + trialNum + grammarCorrect);
         } else {
             showInfo("You lost!");
@@ -66,17 +65,17 @@ $(function () {
 
     function checkEvenOrOdd() {
         if(convertToNum() % 2 === 0){
-            showHint("Even number");
+            showHint("Even number", 1);
         } else {
-            showHint("Odd number");
+            showHint("Odd number", 1);
         }
     }
 
     function checkIfDividedByFour(){
         if(convertToNum() % 4 === 0){
-            showHint("Divided by 4")
+            showHint("Divided by 4", 2)
         } else {
-            showHint("Not divided by 4");
+            showHint("Not divided by 4", 2);
         }
     }
 
@@ -90,16 +89,13 @@ $(function () {
         return tempNum;
     }
 
-    function showHint(content) {
-        var paragraphElement = $("<p>");
-        var divisionElement = $("#hint_content");
-        paragraphElement.text(content);
-        divisionElement.append(paragraphElement);
+    function showHint(content, index) {
+        $("#hint_" + index).text(content);
     }
 
     function clearHints() {
-        var divisionElement = $("#hint_content");
-        divisionElement.empty();
+        $("#hint_1").empty();
+        $("#hint_2").empty();
     }
 
     function showInfo(content) {
@@ -111,16 +107,13 @@ $(function () {
     }
 
     function showDigits() {
-        var paragraphElement = $("<p>");
-        var divisionElement = $("#digits");
         var tempArray = [];
         for(var i = 0; i < randomNum.length; i++) {
             tempArray[i] = randomNum[i];
         }
         var shuffleArray = shuffle(tempArray);
-        console.log(shuffleArray);
-        paragraphElement.text(shuffleArray);
-        divisionElement.append(paragraphElement);
+        var modifiedText = $("#digits p").text() + " " + shuffleArray;
+        $("#digits p").text(modifiedText);
     }
 
     function shuffle(array) {

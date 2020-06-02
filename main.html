@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Simple Game</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
 <div id="score"></div>
@@ -25,15 +27,19 @@
                 <td>
                     <input class="user_answer" type="number" min="0" max="9" step="1" value="0">
                 </td>
+                <td>
+                    <input type="submit" id="check_button" value="Check">
+                </td>
+                <td>
+                    <input type="button" id="refresh" value="Try again!">
+                </td>
             </tr>
         </table>
-        <input type="submit" id="check_button" value="Check">
     </form>
 </div>
 <div id="digits">
     <p>Use follow digits:</p>
 </div>
-<div id="hint_content"></div>
 <div id="hint_form">
     <form id="hints">
         <table>
@@ -43,18 +49,20 @@
                 </td>
             </tr>
             <tr>
+                <td id="hint_1"></td>
+            </tr>
+            <tr>
                 <td>
-                    <input class="user_selection" type="checkbox" name="hint" value="divided-by-four">Is divided by 4?
+                    <input class="user_selection" type="checkbox" name="hint" value="divided-by-four">Is it divided by four?
                 </td>
+            </tr>
+            <tr>
+                <td id="hint_2"></td>
             </tr>
         </table>
         <input type="submit" id="show_button" value="Show">
     </form>
 </div>
-<div>
-    <button id="refresh">Try again!</button>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-<script src="main.js"></script>
+<div id="hint_content"></div>
 </body>
 </html>

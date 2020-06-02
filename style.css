@@ -1,20 +1,26 @@
-#score p {
-    border: 1px solid yellow;
-    margin-left: 10%;
+html {
+    font-size: 16px;
 }
 
-#code {
-    border: 1px solid blue;
+#score p {
+    margin-left: 10%;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
+
 
 #numbers {
     width: 80%;
     margin: auto;
 }
 
+#numbers table {
+    margin: auto;
+}
+
 #digits {
-    border: 1px solid black;
     margin-left: 10%;
+    font-size: 1.2rem;
 }
 
 #hint_content p {
@@ -23,10 +29,12 @@
 }
 
 #hint_form {
-    border: 1px solid green;
     margin-left: 10%;
 }
 
-#refresh {
-    margin-left: 10%;
+#hint_1, #hint_2 {
+    padding-left: 10%;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rosybrown;
 }
